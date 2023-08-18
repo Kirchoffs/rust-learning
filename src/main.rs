@@ -6,6 +6,7 @@ mod mutex_demo;
 mod thread_demo;
 mod rwlock_demo;
 mod result_demo;
+mod read_file_demo;
 
 fn main() {
     println!("Hello, world!");

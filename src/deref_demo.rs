@@ -41,12 +41,14 @@ mod test {
         assert_eq!(box_value, 1);
 
         let customized_box = CustomizedBox::<i32>::new(1);
-        let box_value = *customized_box;     // let box_value = *(customized_box.deref());
+        // let box_value = *(customized_box.deref());
+        let box_value = *customized_box;
         assert_eq!(box_value, 1);
         
         {
             let customized_box_string = CustomizedBox::<String>::new("hello".to_string());
-            print_string(&customized_box_string); // print_string(customized_box_string.deref());
+            // print_string(customized_box_string.deref());
+            print_string(&customized_box_string);
         }
     }
 }
