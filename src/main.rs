@@ -7,6 +7,7 @@ mod thread_demo;
 mod rwlock_demo;
 mod result_demo;
 mod read_file_demo;
+mod option_copied_cloned_demo;
 
 fn main() {
     println!("Hello, world!");
