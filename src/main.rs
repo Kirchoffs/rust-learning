@@ -9,6 +9,7 @@ mod result_demo;
 mod read_file_demo;
 mod option_copied_cloned_demo;
 mod func_trait_demo;
+mod vec_demo;
 
 fn main() {
     println!("Hello, world!");
