@@ -11,6 +11,7 @@ mod option_copied_cloned_demo;
 mod func_trait_demo;
 mod vec_demo;
 mod string_str_demo;
+mod stream_demo;
 
 fn main() {
     println!("Hello, world!");

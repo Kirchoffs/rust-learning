@@ -29,3 +29,13 @@ The copied method for Option is used to create a new Option where the inner valu
 ### Copy & Clone
 - Copy is implicit, inexpensive, and cannot be re-implemented (memcpy).
 - Clone is explicit, may be expensive, and may be re-implement arbitrarily.
+
+### MapWhile
+```
+fn map_while<B, P>(self, predicate: P) -> MapWhile<Self, P>
+where
+    Self: Sized,
+    P: FnMut(Self::Item) -> Option<B>,
+```
+
+`map_while()` takes a closure as an argument. It will call this closure on each element of the iterator, and yield __elements__ while it returns `Some(_)`.
