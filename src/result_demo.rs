@@ -7,7 +7,7 @@ mod test {
      * If no errors occur, the "Done!" message will be printed after the chain is complete.
      */
     #[test]
-    fn chain_result_demo() {
+    fn chain_result_demo_hitotsu() {
         if let Err(err) = get_result_one().and_then(get_result_two) {
             println!("Error: {}", err);
         }
@@ -34,5 +34,13 @@ mod test {
         } else {
             Err("Oops for step 2!".to_string())
         }
+    }
+
+    #[test]
+    fn result_demo_futatsu() {
+        let result: Result<i32, String> = Ok(42);
+        let option = result.ok();
+
+        assert_eq!(option, Some(42));
     }
 }
