@@ -43,4 +43,12 @@ mod test {
 
         assert_eq!(option, Some(42));
     }
+
+    #[test]
+    fn result_as_ref_demo() {
+        let result: Result<i32, String> = Ok(42);
+        let result_ref = &result;
+        let result_ref_as_ref = result_ref.as_ref();
+        assert_eq!(result_ref_as_ref, Ok(&42));
+    }
 }
