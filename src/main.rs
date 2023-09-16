@@ -13,6 +13,12 @@ mod vec_demo;
 mod string_str_demo;
 mod stream_demo;
 mod iter_demo;
+mod sized_demo;
+mod cons_list_demo;
+mod unsized_demo;
+mod unsafe_sized_demo;
+mod as_ref_demo;
+mod borrow_demo;
 
 fn main() {
     println!("Hello, world!");

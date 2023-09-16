@@ -39,3 +39,28 @@ where
 ```
 
 `map_while()` takes a closure as an argument. It will call this closure on each element of the iterator, and yield __elements__ while it returns `Some(_)`.
+
+## AsRef
+```
+pub trait AsRef<T>
+where
+    T: ?Sized,
+{
+    fn as_ref(&self) -> &T;
+}
+```
+A struct which implemenst AsRef<T> can be used as a reference to T by `as_ref` method.
+
+## Sized
+Types with a constant size known at compile time.  
+All type parameters have __an implicit bound of Sized__. The special syntax ?Sized can be used to remove this bound if it’s not appropriate.  
+The one exception is the implicit Self type of a trait. A trait does not have an implicit Sized bound as this is incompatible with trait objects where, by definition, the trait needs to work with all possible implementors, and thus could be any size.
+
+### Unsized Type
+Most types have a particular size, in bytes, that is knowable at compile time. For example, an i32 is thirty-two bits big, or four bytes. However, there are some types which are useful to express, but do not have a defined size. These are called ‘unsized’ or ‘dynamically sized’ types. One example is [T]. This type represents a certain number of T in sequence. But we don’t know how many there are, so the size is not known.
+
+Rust understands a few of these types, but they have some restrictions. There are three:
+
+- We can only manipulate an instance of an unsized type via a pointer. An &[T] works fine, but a [T] does not.
+- Variables and arguments cannot have dynamically sized types.
+- Only the last field in a struct may have a dynamically sized type; the other fields must not. Enum variants must not have dynamically sized types as data.
