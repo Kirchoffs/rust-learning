@@ -66,3 +66,81 @@ Rust understands a few of these types, but they have some restrictions. There ar
 - We can only manipulate an instance of an unsized type via a pointer. An &[T] works fine, but a [T] does not.
 - Variables and arguments cannot have dynamically sized types.
 - Only the last field in a struct may have a dynamically sized type; the other fields must not. Enum variants must not have dynamically sized types as data.
+
+## Cursor
+A Cursor wraps an in-memory buffer and provides it with a Seek implementation.
+
+```
+pub struct Cursor<T> {
+    inner: T,
+    pos: u64,
+}
+
+impl<T> Cursor<T> {
+    pub const fn new(inner: T) -> Cursor<T> {
+        Cursor { pos: 0, inner }
+    }
+
+    pub fn into_inner(self) -> T {
+        self.inner
+    }
+
+    pub const fn get_ref(&self) -> &T {
+        &self.inner
+    }
+
+    pub fn get_mut(&mut self) -> &mut T {
+        &mut self.inner
+    }
+
+    pub const fn position(&self) -> u64 {
+        self.pos
+    }
+
+    pub fn set_position(&mut self, pos: u64) {
+        self.pos = pos;
+    }
+}
+
+impl<T> Cursor<T>
+where
+    T: AsRef<[u8]>,
+{
+    pub fn remaining_slice(&self) -> &[u8] {
+        let len = self.pos.min(self.inner.as_ref().len() as u64);
+        &self.inner.as_ref()[(len as usize)..]
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.pos >= self.inner.as_ref().len() as u64
+    }
+}
+
+impl<T> io::Seek for Cursor<T>
+where
+    T: AsRef<[u8]>,
+{
+    ...
+}   
+
+impl Write for Cursor<&mut [u8]> {
+    ...
+}
+```
+
+## Array
+### Array Expression
+```
+ArrayExpression:
+   [ArrayElements?]
+
+ArrayElements:
+    Expression(, Expression)*,? |
+    Expression; Expression
+```
+
+### Array Type
+```
+ArrayType:
+   [Type; Expression]
+```

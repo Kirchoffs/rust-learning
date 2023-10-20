@@ -19,6 +19,8 @@ mod unsized_demo;
 mod unsafe_sized_demo;
 mod as_ref_demo;
 mod borrow_demo;
+mod array_demo;
+mod cursor_demo;
 
 fn main() {
     println!("Hello, world!");
