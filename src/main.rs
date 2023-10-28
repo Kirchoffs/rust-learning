@@ -21,6 +21,7 @@ mod as_ref_demo;
 mod borrow_demo;
 mod array_demo;
 mod cursor_demo;
+mod pathbuf_demo;
 
 fn main() {
     println!("Hello, world!");
