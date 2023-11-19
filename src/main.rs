@@ -23,6 +23,7 @@ mod array_demo;
 mod cursor_demo;
 mod pathbuf_demo;
 mod dyn_impl_demo;
+mod use_underscore_demo;
 
 fn main() {
     println!("Hello, world!");
