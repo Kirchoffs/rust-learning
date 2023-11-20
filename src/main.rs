@@ -28,6 +28,7 @@ mod from_trait_demo;
 mod map_err_demo;
 mod anyhow_demo;
 mod default_hasher_demo;
+mod into_demo;
 
 fn main() {
     println!("Hello, world!");
