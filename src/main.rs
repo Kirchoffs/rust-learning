@@ -27,6 +27,7 @@ mod use_underscore_demo;
 mod from_trait_demo;
 mod map_err_demo;
 mod anyhow_demo;
+mod default_hasher_demo;
 
 fn main() {
     println!("Hello, world!");
