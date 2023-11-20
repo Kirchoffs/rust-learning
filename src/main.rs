@@ -24,6 +24,9 @@ mod cursor_demo;
 mod pathbuf_demo;
 mod dyn_impl_demo;
 mod use_underscore_demo;
+mod from_trait_demo;
+mod map_err_demo;
+mod anyhow_demo;
 
 fn main() {
     println!("Hello, world!");
