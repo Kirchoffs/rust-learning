@@ -29,6 +29,7 @@ mod map_err_demo;
 mod anyhow_demo;
 mod default_hasher_demo;
 mod into_demo;
+mod closure_demo;
 
 fn main() {
     println!("Hello, world!");
