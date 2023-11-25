@@ -51,7 +51,7 @@ where
 ```
 A struct which implemenst AsRef<T> can be used as a reference to T by `as_ref` method.
 
-Notice that as_ref in Result is not for AsRef trait, it is for &Result<T, E> to Result<&T, &E>.
+Notice that __as_ref__ in __Result__ is not for AsRef trait, it is for &Result<T, E> to Result<&T, &E>.
 
 ## Sized
 Types with a constant size known at compile time.  

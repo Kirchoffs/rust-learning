@@ -30,6 +30,7 @@ mod anyhow_demo;
 mod default_hasher_demo;
 mod into_demo;
 mod closure_demo;
+mod desctruturing_demo;
 
 fn main() {
     println!("Hello, world!");
