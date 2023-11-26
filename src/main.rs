@@ -31,6 +31,7 @@ mod default_hasher_demo;
 mod into_demo;
 mod closure_demo;
 mod desctruturing_demo;
+mod various_match_demo;
 
 fn main() {
     println!("Hello, world!");
