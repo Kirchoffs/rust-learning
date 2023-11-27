@@ -32,4 +32,19 @@ mod test {
         //     println!("Second round: {}", number);
         // }
     }
+
+    #[test]
+    fn iter_fold_demo() {
+        let numbers = vec![1, 2, 3, 4, 5];
+        let sum = numbers
+            .into_iter()
+            .fold(0, |acc, x| acc + x);
+        assert_eq!(sum, 15);
+
+        let numbers = vec![1, 2, 3, 4, 5];
+        let sum = numbers
+            .iter()
+            .fold(0, |acc, &x| acc + x);
+        assert_eq!(sum, 15);
+    }
 }
