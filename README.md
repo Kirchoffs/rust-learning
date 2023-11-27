@@ -150,3 +150,15 @@ ArrayType:
 In Rust, the presence of a semicolon after a statement generally indicates that the statement is an expression whose value is not being returned. However, in the case of macros like anyhow::bail!, the behavior is a bit different due to how the macro is designed.
 
 The `anyhow::bail!("Cannot divide by zero");` macro is designed to create an early return from the function with an error. Even though there is a semicolon after the bail! macro call, the macro itself expands into code that includes a return statement. This is a common pattern in Rust macros where the macro can alter the flow of the program in ways that are not immediately obvious from the calling syntax.
+
+## Anyhow
+### Basics
+```
+// anyhow::Result
+pub type Result<T, E = Error> = Result<T, E>;
+```
+
+```
+// anyhow::Error
+pub struct Error
+```
