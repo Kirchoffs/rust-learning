@@ -8,6 +8,7 @@ mod rwlock_demo;
 mod result_demo;
 mod read_file_demo;
 mod option_copied_cloned_demo;
+mod option_as_mut_demo;
 mod func_trait_demo;
 mod vec_demo;
 mod string_str_demo;
