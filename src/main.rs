@@ -36,6 +36,7 @@ mod desctruturing_demo;
 mod various_match_demo;
 mod linked_list_demo;
 mod bytes_demo;
+mod default;
 
 fn main() {
     println!("Hello, world!");
