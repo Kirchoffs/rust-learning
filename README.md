@@ -163,3 +163,10 @@ pub type Result<T, E = Error> = Result<T, E>;
 // anyhow::Error
 pub struct Error
 ```
+
+## Copy & Clone
+Clone is designed for arbitrary duplications: a Clone implementation for a type T can do arbitrarily complicated operations required to create a new T.  
+The Copy trait represents values that can be safely duplicated via memcpy.
+
+- Copy is always Clone, but Clone is not always Copy. Clone is more general than Copy.
+- A type can implement Copy if all of its components implement Copy. 

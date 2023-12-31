@@ -38,6 +38,7 @@ mod linked_list_demo;
 mod bytes_demo;
 mod default;
 mod iterator_demo;
+mod copy_clone_demo;
 
 fn main() {
     println!("Hello, world!");

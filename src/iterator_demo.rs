@@ -27,7 +27,7 @@ mod test {
     }
 
     #[test]
-    fn counter_iterator() {
+    fn counter_iterator_alpha() {
         let mut counter = Counter::new();
 
         assert_eq!(counter.next(), Some(1));
@@ -36,5 +36,14 @@ mod test {
         assert_eq!(counter.next(), Some(4));
         assert_eq!(counter.next(), Some(5));
         assert_eq!(counter.next(), None);
+    }
+
+    #[test]
+    fn counter_iterator_beta() {
+        let mut counter = Counter::new();
+
+        while let Some(num) = counter.next() {
+            println!("{num}");
+        }
     }
 }
