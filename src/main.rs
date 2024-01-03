@@ -39,6 +39,7 @@ mod bytes_demo;
 mod default;
 mod iterator_demo;
 mod copy_clone_demo;
+mod binary_search;
 
 fn main() {
     println!("Hello, world!");
