@@ -40,6 +40,7 @@ mod default;
 mod iterator_demo;
 mod copy_clone_demo;
 mod binary_search;
+mod life_time_intro_demo;
 
 fn main() {
     println!("Hello, world!");
