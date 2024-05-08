@@ -51,4 +51,25 @@ mod test {
         let result_ref_as_ref = result_ref.as_ref();
         assert_eq!(result_ref_as_ref, Ok(&42));
     }
+
+    #[test]
+    fn result_map_demo() {
+        let rf = |s: &str| s.chars().count();
+        let r1: Result<&str, &str> = Ok("42");
+        let r2 = r1.map(rf);
+        assert_eq!(r2, Ok(2));
+
+        let re = |s: &str| -> isize { s.parse().unwrap() };
+        let e1: Result<&str, &str> = Err("42");
+        let e2 = e1.map_err(re);
+        assert_eq!(e2, Err(42));
+    }
+
+    #[test]
+    fn result_bool_demo() {
+        let r1: Result<i32, &str> = Ok(42);
+        let r2: Result<i32, &str> = Err("42");
+        let r3 = r1.or(r2);
+        assert_eq!(r3, Ok(42));
+    }
 }

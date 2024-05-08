@@ -1,5 +1,7 @@
 #[cfg(test)]
 mod test {
+    use std::collections::HashMap;
+
     #[test]
     fn vec_demo_alpha() {
         let v = vec!["tom".to_string(), "ben".to_string(), "bill".to_string()];
@@ -62,5 +64,19 @@ mod test {
         // for e in v.into_iter() {
         //     println!("e = {}", e + 42);
         // }
+    }
+
+    #[test]
+    fn vec_to_map_demo() {
+        let v1 = vec![("tom", 42), ("ben", 24), ("bill", 36)];
+        let m1: HashMap<_, _> = v1.into_iter().collect();
+        println!("m1 = {:?}", m1);
+
+        let v2 = vec![("tom", 42), ("ben", 24), ("bill", 36)];
+        let mut m2 = HashMap::new();
+        for e in &v2 {
+            m2.insert(&e.0, e.1);
+        }
+        println!("m2 = {:?}", m2);
     }
 }

@@ -42,6 +42,8 @@ mod copy_clone_demo;
 mod binary_search;
 mod life_time_intro_demo;
 mod customized_error;
+mod hash_map_demo;
+mod buf_read;
 
 fn main() {
     println!("Hello, world!");
