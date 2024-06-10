@@ -45,6 +45,7 @@ mod customized_error;
 mod hash_map_demo;
 mod buf_read;
 mod read_std;
+mod unsafe_demo;
 
 fn main() {
     println!("Hello, world!");
