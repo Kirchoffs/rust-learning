@@ -170,3 +170,18 @@ The Copy trait represents values that can be safely duplicated via memcpy.
 
 - Copy is always Clone, but Clone is not always Copy. Clone is more general than Copy.
 - A type can implement Copy if all of its components implement Copy. 
+
+## Crate & Package
+From `The Rust Programming Language`:
+
+#### Crate
+- A crate is the smallest amount of code that the Rust compiler considers at a time.
+- A crate can come in one of two forms: a binary crate or a library crate. Binary crates are programs you can compile to an executable that you can run, such as a command-line program or a server. Each must have a function called main that defines what happens when the executable runs. All the crates we’ve created so far have been binary crates.
+- Library crates don’t have a main function, and they don’t compile to an executable. Instead, they define functionality intended to be shared with multiple projects. For example, the rand crate we used provides functionality that generates random numbers. Most of the time when Rustaceans say “crate”, they mean library crate, and they use “crate” interchangeably with the general programming concept of a “library".
+
+#### Package
+- A package is a bundle of one or more crates that provides a set of functionality. A package contains a Cargo.toml file that describes how to build those crates.
+- A package can contain as many binary crates as you like, but at most only one library crate. A package must contain at least one crate, whether that’s a library or binary crate.
+- Cargo follows a convention that `src/main.rs` is the crate root of a binary crate with the same name as the package. Likewise, Cargo knows that if the package directory contains `src/lib.rs`, the package contains a library crate with the same name as the package, and `src/lib.rs` is its crate root. Cargo passes the __crate root files__ to rustc to build the library or binary.
+- A binary (application) package can have multiple binary crates by placing files in the `src/bin` directory: each file will be a separate binary crate.
+- A library package can only have one library crate.

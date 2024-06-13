@@ -46,6 +46,8 @@ mod hash_map_demo;
 mod buf_read;
 mod read_std;
 mod unsafe_demo;
+mod trait_demo;
+mod attribute_demo;
 
 fn main() {
     println!("Hello, world!");
