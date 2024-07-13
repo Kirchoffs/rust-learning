@@ -185,3 +185,19 @@ From `The Rust Programming Language`:
 - Cargo follows a convention that `src/main.rs` is the crate root of a binary crate with the same name as the package. Likewise, Cargo knows that if the package directory contains `src/lib.rs`, the package contains a library crate with the same name as the package, and `src/lib.rs` is its crate root. Cargo passes the __crate root files__ to rustc to build the library or binary.
 - A binary (application) package can have multiple binary crates by placing files in the `src/bin` directory: each file will be a separate binary crate.
 - A library package can only have one library crate.
+
+## Orphan Rule
+You cannot implement a trait defined outside your crate on a type defined outside your crate.
+
+Extension Trait Pattern:
+```
+impl InternalTrait for ExternalType {
+    ...
+}
+```
+
+```
+impl ExternalTrait for InternalType {
+    ...
+}
+```

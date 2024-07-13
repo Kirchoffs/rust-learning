@@ -6,8 +6,14 @@ mod test {
     fn vec_demo_alpha() {
         let v = vec!["tom".to_string(), "ben".to_string(), "bill".to_string()];
         // Wrong usage: let e = v[1];
-        let e = &v[1];
-        println!("e = {}", e);
+        let e1 = &v[1];
+        println!("e1 = {}", e1);
+
+        let e2 = v.get(1);
+        match e2 {
+            Some(e) => println!("e2 = {}", e),
+            None => println!("no such element at index 1"),
+        }
     }
 
     #[test]

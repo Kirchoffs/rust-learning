@@ -48,6 +48,10 @@ mod read_std;
 mod unsafe_demo;
 mod trait_demo;
 mod attribute_demo;
+mod extension_trait_demo;
+mod hash_trait_demo;
+mod partial_eq_demo;
+mod pointers_demo;
 
 fn main() {
     println!("Hello, world!");
