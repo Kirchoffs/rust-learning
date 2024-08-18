@@ -19,6 +19,11 @@ pub fn cloned<T>(&self) -> Option<T> where T: Clone
 ```
 The cloned method for Option is used to create a new Option where the inner value, if present and of a type that implements the Clone trait, is cloned into a new Option. This method is useful when you have an Option<&T> and you want to create an `Option<T>`, where T is a type that implements Clone.
 
+```
+let x = Some("hello".to_string());
+let y = x.as_ref().cloned();
+```
+
 
 ### copied
 ```
@@ -200,4 +205,20 @@ impl InternalTrait for ExternalType {
 impl ExternalTrait for InternalType {
     ...
 }
+```
+
+## Test
+### Test in single thread
+```
+>> cargo test -- --test-threads=1
+```
+
+### Test with prefix
+```
+>> cargo test hello
+```
+
+### Show output while running tests
+```
+>> cargo test -- --show-output
 ```

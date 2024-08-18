@@ -52,6 +52,8 @@ mod extension_trait_demo;
 mod hash_trait_demo;
 mod partial_eq_demo;
 mod pointers_demo;
+mod test_demo;
+mod builder_pattern;
 
 fn main() {
     println!("Hello, world!");
