@@ -18,7 +18,7 @@ mod test {
     }
     
     #[test]
-    fn test_trait() {
+    fn trait_demo() {
       let f = Football;
       f.play(SportType::Land);
     }

@@ -54,6 +54,8 @@ mod partial_eq_demo;
 mod pointers_demo;
 mod test_demo;
 mod builder_pattern;
+mod error_progressive;
+mod channel;
 
 fn main() {
     println!("Hello, world!");
