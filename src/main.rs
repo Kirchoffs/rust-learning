@@ -56,6 +56,7 @@ mod test_demo;
 mod builder_pattern;
 mod error_progressive;
 mod channel;
+mod condvar_demo;
 
 fn main() {
     println!("Hello, world!");
