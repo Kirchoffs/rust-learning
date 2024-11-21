@@ -60,6 +60,7 @@ mod condvar_demo;
 mod box_demo;
 mod macros_demo;
 mod type_state_pattern_demo;
+mod serde_json_demo;
 
 fn main() {
     println!("Hello, world!");
