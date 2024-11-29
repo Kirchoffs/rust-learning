@@ -61,6 +61,11 @@ mod box_demo;
 mod macros_demo;
 mod type_state_pattern_demo;
 mod serde_json_demo;
+mod tokio_demo;
+mod barrier_demo;
+mod atomic_demo;
+mod async_demo;
+mod self_referential_structure;
 
 fn main() {
     println!("Hello, world!");

@@ -42,8 +42,30 @@ mod test {
     }
 
     #[test]
+    fn channel_multiple_producer_demo() {
+        let (alpha_tx, rx) = mpsc::channel();
+        let beta_tx = alpha_tx.clone();
+
+        thread::spawn(move || {
+            let val = String::from("hi from alpha tx");
+            alpha_tx.send(val).unwrap();
+        });
+
+        thread::spawn(move || {
+            let val = String::from("hi from beta tx");
+            beta_tx.send(val).unwrap();
+        });
+
+        for received in rx {
+            println!("Got: {}", received);
+        }
+    }
+
+    #[test]
     fn sync_channel_demo() {
         let (tx, rx) = mpsc::sync_channel(0);
+        // The capacity of the channel is 0, so the send operation will block until the receiver is ready to receive a value
+        // Sync channel is useful when you want to avoid the out-of-memory error
 
         let handle = thread::spawn(move || {
             let val = String::from("hi");

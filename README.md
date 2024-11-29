@@ -5,6 +5,19 @@ Rc is not thread-safe and can only be used in single-threaded scenarios. It cann
 
 Arc, on the other hand, is designed to be thread-safe and can safely be shared among multiple threads. It implements atomic reference counting, which ensures that references can be safely shared across threads. This makes Arc suitable for concurrent programming.
 
+## Mutex
+`mutex.lock` returns a `Result` wrapping a `MutexGuard`.
+`MutexGuard` is a smart pointer. Its lifetime is tied to the lifetime of the mutex.
+```
+#[stable(feature = "rust1", since = "1.0.0")]
+pub fn lock(&self) -> LockResult<MutexGuard<'_, T>> {
+    unsafe {
+        self.inner.lock();
+        MutexGuard::new(self)
+    }
+}
+```
+
 ## BufRead::lines & BufRead.read_line
 __BufRead::lines__  
 Each string returned will not have a newline byte (the 0xA byte) or CRLF (0xD, 0xA bytes) at the end.
