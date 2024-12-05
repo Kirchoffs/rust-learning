@@ -220,6 +220,15 @@ impl ExternalTrait for InternalType {
 }
 ```
 
+## Closure
+```
+fn  add_one_v1   (x: u32) -> u32 { x + 1 }
+let add_one_v2 = add_one_v1;
+let add_one_v3 = |x: u32| -> u32 { x + 1 };
+let add_one_v4 = |x|             { x + 1 };
+let add_one_v5 = |x|               x + 1  ;
+```
+
 ## Test
 ### Test in single thread
 ```

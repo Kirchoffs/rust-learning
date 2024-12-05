@@ -66,6 +66,7 @@ mod barrier_demo;
 mod atomic_demo;
 mod async_demo;
 mod self_referential_structure;
+mod customized_future_demo;
 
 fn main() {
     println!("Hello, world!");

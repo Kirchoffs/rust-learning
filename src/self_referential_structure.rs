@@ -1,5 +1,9 @@
 #[cfg(test)]
 mod test {
+    use std::{marker::PhantomPinned, pin};
+
+    use futures::executor::block_on;
+
     #[test]
     fn basic() {
         struct U<'a> {
@@ -153,35 +157,43 @@ mod test {
             tmp_buf.set_contents(b"Hello, rust!");
         }
 
-        assert_eq!(buf.as_bytes(), b"Hello, rust!");
+        let len = b"Hello, rust!".len();
+        assert_eq!(buf.as_bytes()[..len], b"Hello, rust!"[..len]);
     }
 
     #[test]
     fn self_referential_structure_issue_solution_2() {
         use std::ptr::NonNull;
+        use std::pin::Pin;
 
         #[derive(Debug)]
         struct InlineBuf {
             array: [u8; 64],
             slice: NonNull<[u8]>,
+            _pinned: PhantomPinned,
         }
 
         impl InlineBuf {
             pub fn new() -> Self {
                 Self {
                     array: [0; 64],
-                    slice: NonNull::from(&[])
+                    slice: NonNull::from(&[]),
+                    _pinned: PhantomPinned,
                 }
             }
 
-            pub fn set_contents(&mut self, contents: &[u8]) -> bool {
+            pub fn set_contents(self: Pin<&mut Self>, contents: &[u8]) -> bool {
                 let contents_len = contents.len();
                 if contents_len > self.array.len() {
                     return false;
                 }
 
-                self.array[..contents_len].copy_from_slice(contents);
-                self.slice = NonNull::from(&self.array[..contents_len]);
+                unsafe {
+                    let this = self.get_unchecked_mut();
+                    this.array[..contents_len].copy_from_slice(contents);
+                    this.slice = NonNull::from(&this.array[..contents_len]);
+                }
+
                 true
             }
 
@@ -192,17 +204,21 @@ mod test {
             }
         }
 
-        let mut buf = InlineBuf::new();
         {
-            let mut tmp_buf = InlineBuf::new();
-            tmp_buf.set_contents(b"Hello, world!");
+            let mut buf = Box::pin(InlineBuf::new());
+            let mut_buf = buf.as_mut();
+            mut_buf.set_contents(b"Hello, world!");
 
-            buf = tmp_buf;
-
-            tmp_buf = InlineBuf::new();
-            tmp_buf.set_contents(b"Hello, rust!");
+            assert_eq!(buf.as_bytes(), b"Hello, world!");
         }
 
-        assert_eq!(buf.as_bytes(), b"Hello, rust!");
+        {
+            use std::pin::pin;
+            let buf = InlineBuf::new();
+            let mut pinned_buf = pin!(buf);
+            pinned_buf.as_mut().set_contents(b"Hello, rust!");
+
+            assert_eq!(pinned_buf.as_bytes(), b"Hello, rust!");
+        }
     }
 }
