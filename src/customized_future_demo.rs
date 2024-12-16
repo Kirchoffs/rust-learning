@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod test {
     #[test]
-    fn customized_future_demo() {
+    fn customized_useless_future_demo() {
         use std::time::{Duration, Instant};
         use std::thread;
         use std::fmt::Debug;
