@@ -69,6 +69,7 @@ mod self_referential_structure;
 mod customized_future_demo;
 mod once_cell_demo;
 mod flume_demo;
+mod async_task_demo;
 
 fn main() {
     println!("Hello, world!");
