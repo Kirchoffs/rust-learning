@@ -70,6 +70,7 @@ mod customized_future_demo;
 mod once_cell_demo;
 mod flume_demo;
 mod async_task_demo;
+mod peekable_iterator_demo;
 
 fn main() {
     println!("Hello, world!");

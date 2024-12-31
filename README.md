@@ -244,3 +244,53 @@ let add_one_v5 = |x|               x + 1  ;
 ```
 >> cargo test -- --show-output
 ```
+
+## Code Analysis
+### Peekable<Chars>
+Peekable:
+```
+pub struct Peekable<I: Iterator> {
+    iter: I,
+    /// Remember a peeked value, even if it was None.
+    peeked: Option<Option<I::Item>>,
+}
+
+impl <I: Iterator> Peekable<I> {
+    pub fn peek(&mut self) -> Option<&I::Item> {
+        let iter = &mut self.iter;
+        self.peeked.get_or_insert_with(|| iter.next()).as_ref()
+    }    
+}
+```
+
+Chars:
+```
+pub struct Chars<'a> {
+    pub(super) iter: slice::Iter<'a, u8>,
+}
+
+impl<'a> Iterator for Chars<'a> {
+    type Item = char;
+}
+```
+
+So `peekable_chars.peek()` returns `Option<&char>`.
+
+```
+impl<T> Option<T> {
+    pub fn filter<P>(self, predicate: P) -> Self
+    where
+        P: FnOnce(&T) -> bool,
+    {
+        if let Some(x) = self {
+            if predicate(&x) {
+                return Some(x);
+            }
+        }
+        None
+    }
+}
+```
+
+Here, `predicate` is `FnOnce(&T) -> bool` and `T` in our case is `&char`.  
+So according to `P: FnOnce(&T) -> bool`, the parameter type of `predicate` is `&&char`.
