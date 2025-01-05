@@ -71,6 +71,11 @@ mod once_cell_demo;
 mod flume_demo;
 mod async_task_demo;
 mod peekable_iterator_demo;
+mod chars_demo;
+mod prost_demo;
+mod double_ended_iterator_demo;
+mod std_ops_range_demo;
+mod btree_map_demo;
 
 fn main() {
     println!("Hello, world!");
